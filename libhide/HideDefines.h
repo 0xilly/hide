@@ -1,6 +1,11 @@
+/* 
+ * Copyright (c) Anthony Anderson
+ * SPDX-License-Identifier: MPL-2.0
+ */
 #pragma once
 
 #ifdef __cplusplus
+#define For(it, iterable) for(auto &it : iterable)
 extern "C" {
 #endif
 

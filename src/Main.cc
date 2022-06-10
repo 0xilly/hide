@@ -1,3 +1,8 @@
+/* 
+ * Copyright (c) Anthony Anderson
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 #include <iostream>
 #include <core/Platform.hh>
 
