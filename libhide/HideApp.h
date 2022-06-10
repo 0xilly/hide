@@ -6,7 +6,9 @@
 extern "C" {
 #endif
 
-typedef enum HideMode {
+typedef struct HideApp HideApp;
+
+typedef enum EditorMode {
   BASIC = 0,
   EDIT,
   VISUAL,
@@ -19,9 +21,10 @@ typedef enum Platform {
 } Platform;
 
 typedef struct HideApp {
-  Platform platform;
-  HideMode mode;
-
+  Platform    platform;
+  EditorMode  mode;
+  i32         width;
+  i32         height;
 } HideApp;
 
 #ifdef __cplusplus

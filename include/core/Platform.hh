@@ -1,9 +1,10 @@
-#include <HideDefines.h>
+
+#include <HideApp.h>
 
 struct PlatformState {
   const char* title;
+  HideApp* hide_app;
   i32 x, y;
-  i32 width, height;
   bool is_running;
 };
 
