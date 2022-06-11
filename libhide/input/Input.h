@@ -140,6 +140,22 @@ typedef enum Keys : u8 {
 
 } Keys;
 
+typedef struct KeyboardState {
+  u8 keys[256];
+} KeyboardState;
+
+typedef struct MouseState {
+  i16 x, y;
+  u8 buttons[5];
+} MouseState;
+
+typedef struct InputState {
+  KeyboardState current_keyboard_state;
+  KeyboardState previous_keyboard_state;
+  MouseState    current_mouse_state;
+  MouseState    previous_mouse_state;
+} InputState;
+
 #ifdef __cplusplus
 }
 #endif
