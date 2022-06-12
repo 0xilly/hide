@@ -7,12 +7,15 @@
 
 #include <HideApp.h>
 #include <input/Input.h>
+#include <render/VkManager.hh>
 
 struct PlatformState {
   const char* title;
   HideApp* hide_app;
   i32 x, y;
   bool is_running;
+  VkSurfaceKHR surface;
+  
 };
 
 auto platform_init(const char* name, i32 x, i32 y, i32 width, i32 height) -> PlatformState*;
@@ -23,3 +26,4 @@ auto get_key(u8 code) -> Keys;
 
 auto event_listener() -> void;
 
+auto init_vk_surface(VkManager* manager) -> bool;

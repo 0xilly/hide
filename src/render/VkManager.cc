@@ -12,7 +12,7 @@ auto VkManager::setup() -> void {
   appinfo.applicationVersion  = VK_MAKE_VERSION(0,0,1);
   appinfo.pEngineName         = "Nia Edit";
   appinfo.engineVersion       = VK_MAKE_VERSION(0,0,1);
-  appinfo.apiVersion          = VK_API_VERSION_1_3;
+  appinfo.apiVersion          = VK_API_VERSION_1_1;
 
   VkInstanceCreateInfo create_instance{};
   create_instance.sType             = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;

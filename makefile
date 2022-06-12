@@ -5,7 +5,7 @@ VERSION = $(MAJOR).$(MINOR)
 INCLUDE = include
 LIBHIDE = -Ilibhide
 SRC 	= $(shell find src/ -type f -name '*.cc')
-LIBS 	= $(shell pkg-config --libs tree-sitter luajit vulkan shaderc xcb x11)
+LIBS 	= $(shell pkg-config --libs tree-sitter luajit fmt vulkan shaderc xcb x11)
 OUT=bin
 
 build: compile

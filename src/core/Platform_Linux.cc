@@ -9,14 +9,15 @@
 
 #include <core/Platform.hh>
 #include <HideApp.h>
+#include <core/Log.hh>
 
 #include <cstdint>
 #include <cstring>
 
-extern "C" {
-  #include <xcb/xcb.h>
-  #include <vulkan/vulkan.h>
-}
+#define VK_USE_PLATFORM_XCB_KHR
+#include <xcb/xcb.h>
+#include <vulkan/vulkan_xcb.h>
+#include <render/VkManager.hh>
 
 #include <iostream>
 
@@ -99,7 +100,7 @@ auto init_xcb() -> bool {
   i32 result = xcb_flush(linux_state->connection);
 
   if (result <= 0) {
-    std::cerr << "Error flushing the X window\n";
+    PANIC("Error flusing X window");
     return false;
   }
   return true;
@@ -125,5 +126,19 @@ auto event_listener() -> void {
   }
 };
 
+auto init_vk_surface(VkManager* manager) -> bool {
+
+  VkXcbSurfaceCreateInfoKHR info = {VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR};
+  info.connection  = linux_state->connection;
+  info.window      = linux_state->window;
+  //FIXME(anthony): I need to impl an allocator maybe use VMA?
+  VkResult result  = vkCreateXcbSurfaceKHR(manager->instance, &info, nullptr, &linux_state->p_state->surface);
+  if (result != VK_SUCCESS) {
+    PANIC("Failed to to create vulkan surface panicing");
+    return false;
+  }
+
+  return true;
+}
 
 #endif

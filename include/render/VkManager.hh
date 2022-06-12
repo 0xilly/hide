@@ -10,6 +10,7 @@
 struct VkManager {
     VkApplicationInfo appinfo{};
     VkInstance instance;
+    VkSurfaceKHR surface;
  
     auto setup() -> void;
     auto cleanup() -> void;
